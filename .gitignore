@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Data files - DON'T COMMIT YOUR DATA
+*.csv
+!sample_data.csv  # Allow sample data
+data/
+!data/sample/
+
+# Environment variables
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# FastAPI / Uvicorn
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Model files (if you add them later)
+*.pkl
+*.h5
+*.joblib
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
