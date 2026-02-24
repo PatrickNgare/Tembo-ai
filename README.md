@@ -1,68 +1,62 @@
 # 🐘 Tembo AI — Kenya Travel Assistant
 
-> An AI-powered travel assistant built for Kenya, by Kenya.
+An AI-powered travel assistant for Kenya, built with FastAPI and LangChain.
 
 ---
 
-## What is Tembo AI?
-
-Tembo AI is an intelligent travel and tourism assistant that helps users plan trips across Kenya. It uses Retrieval-Augmented Generation (RAG) and LangChain tools to provide accurate, up-to-date travel advice — from safari itineraries to coastal getaways.
-
----
-
-## Features
-
-- 🗺️ AI-powered Kenya travel planning
-- 🌤️ Real-time weather for Kenyan cities
-- 💰 Budget estimation (Budget / Mid-range / Luxury)
-- 📚 Kenya knowledge base with RAG
-- 🧠 Conversation memory
-- 🌐 Streamlit web interface
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| LLM | OpenAI GPT-4o-mini |
-| Orchestration | LangChain |
-| Vector DB | ChromaDB |
-| Embeddings | OpenAI text-embedding-3-small |
-| Web UI | Streamlit |
-| Language | Python 3.11+ |
-
----
-
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
-# 1. Clone the repo
+# Clone the repo
 git clone https://github.com/your-username/tembo-ai.git
 cd tembo-ai
 
-# 2. Create virtual environment
+# Create virtual environment
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# 3. Install dependencies
+# Install dependencies
 pip install -r requirements.txt
 
-# 4. Add your API keys
+# Set up environment variables
 cp .env.example .env
-# Edit .env with your keys
+# Edit .env and add your API keys
 
-# 5. Run the app
-streamlit run app.py
+# Run the server
+uvicorn main:app --reload
+```
+
+The API will be live at `http://localhost:8000`  
+Interactive docs at `http://localhost:8000/docs`
+
+---
+
+## 📁 Project Structure
+
+```
+tembo-ai/
+├── main.py              # FastAPI app entry point
+├── routes/
+│   ├── chat.py          # Chat endpoints
+│   └── itinerary.py     # Itinerary generation
+├── tools/
+│   ├── weather.py       # Weather API tool
+│   ├── destinations.py  # Kenya destinations lookup
+│   └── budget.py        # Budget calculator
+├── knowledge/
+│   └── tembo_kb/        # ChromaDB vector store
+├── requirements.txt
+├── .env.example
+└── README.md
 ```
 
 ---
 
-## Environment Variables
+## 🔑 Environment Variables
 
 Create a `.env` file in the root directory:
 
-```
+```env
 OPENAI_API_KEY=sk-your-key-here
 WEATHER_API_KEY=your-openweather-key
 GOOGLE_PLACES_KEY=your-google-key
@@ -70,25 +64,72 @@ GOOGLE_PLACES_KEY=your-google-key
 
 ---
 
-## Project Structure
+## 📡 API Endpoints
 
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/` | Health check |
+| `POST` | `/chat` | Send a message to Tembo |
+| `POST` | `/itinerary` | Generate a travel itinerary |
+| `GET` | `/destinations` | List Kenya destinations |
+
+### Example Request
+
+```bash
+curl -X POST http://localhost:8000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Plan a 5-day trip to Masai Mara"}'
 ```
-tembo-ai/
-├── app.py                  # Streamlit web app
-├── day3_tools.py           # LangChain tools (weather, destinations, budget)
-├── day4_knowledge_base.py  # Build the vector knowledge base
-├── day4_rag.py             # RAG question answering chain
-├── tembo_knowledge_base/   # ChromaDB vector store (auto-generated)
-├── requirements.txt
-└── .env.example
+
+### Example Response
+
+```json
+{
+  "response": "Karibu! Here is your 5-day Masai Mara itinerary...",
+  "sources": ["masai_mara_guide", "kws_park_fees"]
+}
 ```
 
 ---
 
-## Built With ❤️ in Nairobi
+## 🛠️ Tech Stack
 
-
+- **FastAPI** — API framework
+- **LangChain** — AI orchestration & RAG pipeline
+- **OpenAI GPT-4o-mini** — Language model
+- **ChromaDB** — Vector database for Kenya knowledge base
+- **OpenWeatherMap API** — Live weather data
 
 ---
 
-*Karibu Kenya! 🇰🇪*
+## 📦 Requirements
+
+```
+fastapi
+uvicorn
+openai
+langchain
+langchain-openai
+langchain-community
+chromadb
+tiktoken
+requests
+python-dotenv
+pydantic
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first.
+
+---
+
+## 📄 License
+
+MIT
+
+---
+
+*Built with ❤️ in Nairobi, Kenya 🇰🇪*
