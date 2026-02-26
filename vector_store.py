@@ -130,15 +130,18 @@ def similarity_search(
     query_vector = embedder.embed_query(query)
     query_vector_str = str(query_vector)
 
-    # Build filter conditions
+    # Build filter conditions - params must match order of %s in SQL
     filters = []
-    params = [query_vector_str, top_k]
+    filter_params = []
     if category_filter:
-        filters.append(f"AND category = ${len(params) + 1}")
-        params.append(category_filter)
+        filters.append("AND category = %s")
+        filter_params.append(category_filter)
     if region_filter:
-        filters.append(f"AND region = ${len(params) + 1}")
-        params.append(region_filter)
+        filters.append("AND region = %s")
+        filter_params.append(region_filter)
+
+    # Order: similarity %s, filter %s(s), ORDER BY %s, LIMIT %s
+    params = [query_vector_str] + filter_params + [query_vector_str, top_k]
 
     sql = f"""
         SELECT
@@ -147,12 +150,12 @@ def similarity_search(
             category,
             region,
             destination,
-            1 - (embedding <=> $1::vector) AS similarity
+            1 - (embedding <=> %s::vector) AS similarity
         FROM documents
         WHERE 1=1
         {" ".join(filters)}
-        ORDER BY embedding <=> $1::vector
-        LIMIT $2
+        ORDER BY embedding <=> %s::vector
+        LIMIT %s
     """
 
     conn = get_connection()
