@@ -1,0 +1,53 @@
+{
+  "chat_examples": [
+    {
+      "description": "Basic question about a destination",
+      "request": {
+        "message": "What is Amboseli National Park?",
+        "session_id": "user123"
+      }
+    },
+    {
+      "description": "Safari planning query",
+      "request": {
+        "message": "Plan a 5-day trip to Masai Mara",
+        "session_id": "user123"
+      }
+    },
+    {
+      "description": "Entry fees question",
+      "request": {
+        "message": "How much does it cost to enter Tsavo National Park?",
+        "session_id": "user456"
+      }
+    },
+    {
+      "description": "Beach destination query",
+      "request": {
+        "message": "Tell me about Diani Beach",
+        "session_id": "default",
+        "category_filter": "beach"
+      }
+    },
+    {
+      "description": "Wildlife migration question",
+      "request": {
+        "message": "When is the best time to see the wildebeest migration?",
+        "session_id": "safari_fan"
+      }
+    },
+    {
+      "description": "Transport question",
+      "request": {
+        "message": "How do I get from Nairobi to Mombasa?",
+        "session_id": "traveler1",
+        "category_filter": "transport"
+      }
+    }
+  ],
+  "curl_examples": {
+    "basic_chat": "curl -X POST http://localhost:8000/chat -H 'Content-Type: application/json' -d '{\"message\": \"What is Amboseli?\", \"session_id\": \"test\"}'",
+    "with_filter": "curl -X POST http://localhost:8000/chat -H 'Content-Type: application/json' -d '{\"message\": \"Best beaches in Kenya\", \"session_id\": \"test\", \"category_filter\": \"beach\"}'",
+    "health_check": "curl http://localhost:8000/health"
+  }
+}

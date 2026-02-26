@@ -57,6 +57,10 @@ def rag_answer(
       6. Return answer + sources
     """
 
+    # Normalize "null" string to None
+    if category_filter in (None, "null", "None", ""):
+        category_filter = None
+
     # ── 1 & 2: Semantic search (fully local, no API cost) ────────────────────────
     chunks = similarity_search(
         query=question,
