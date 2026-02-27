@@ -36,16 +36,23 @@ class HuggingFaceEmbeddings:
 
     def _get_embedding(self, text: str) -> List[float]:
         """Get embedding for a single text using feature-extraction."""
-        response = requests.post(
-            API_URL,
-            headers=self.headers,
-            json={
-                "inputs": text,
-                "options": {"wait_for_model": True}
-            }
-        )
-        response.raise_for_status()
-        result = response.json()
+        if not self.api_key:
+            raise ValueError("HF_API_KEY environment variable is not set. Get a free key at https://huggingface.co/settings/tokens")
+        
+        try:
+            response = requests.post(
+                API_URL,
+                headers=self.headers,
+                json={
+                    "inputs": text,
+                    "options": {"wait_for_model": True}
+                },
+                timeout=30
+            )
+            response.raise_for_status()
+            result = response.json()
+        except requests.exceptions.RequestException as e:
+            raise ValueError(f"HuggingFace API error: {str(e)}")
         
         # Handle nested array response - average pool the token embeddings
         if isinstance(result, list) and len(result) > 0:

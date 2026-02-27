@@ -6,11 +6,16 @@ Run:  uvicorn main:app --reload
 Docs: http://localhost:8000/docs
 """
 
+import logging
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from rag import ChatRequest, ChatResponse, rag_answer
 from vector_store import get_document_count
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="🐘 Tembo AI",
@@ -55,6 +60,7 @@ def chat(request: ChatRequest):
         )
         return ChatResponse(**result)
     except Exception as e:
+        logger.error(f"Chat endpoint error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 

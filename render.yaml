@@ -13,6 +13,8 @@ services:
         value: "3.11"
       - key: GROQ_API_KEY
         sync: false  # Set this in Render dashboard
+      - key: HF_API_KEY
+        sync: false  # Set this in Render dashboard (HuggingFace API key)
       - key: DATABASE_URL
         sync: false  # Set this in Render dashboard (Supabase connection string)
     plan: free
