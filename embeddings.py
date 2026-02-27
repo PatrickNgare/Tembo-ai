@@ -16,8 +16,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 MODEL_ID = "sentence-transformers/all-MiniLM-L6-v2"
-# Updated API URL format
-API_URL = f"https://api-inference.huggingface.co/models/{MODEL_ID}"
+# Updated API URL format - use feature-extraction pipeline
+API_URL = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{MODEL_ID}"
 
 class HuggingFaceEmbeddings:
     def __init__(self):
