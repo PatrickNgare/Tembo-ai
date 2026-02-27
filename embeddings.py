@@ -16,7 +16,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 MODEL_ID = "sentence-transformers/all-MiniLM-L6-v2"
-API_URL = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{MODEL_ID}"
+# Updated API URL format
+API_URL = f"https://api-inference.huggingface.co/models/{MODEL_ID}"
 
 class HuggingFaceEmbeddings:
     def __init__(self):
@@ -33,27 +34,41 @@ class HuggingFaceEmbeddings:
         norm = math.sqrt(sum(x*x for x in vector))
         return [x/norm for x in vector] if norm > 0 else vector
 
-    def embed_text(self, text: str) -> List[float]:
-        """Embed a single string."""
+    def _get_embedding(self, text: str) -> List[float]:
+        """Get embedding for a single text using feature-extraction."""
         response = requests.post(
             API_URL,
             headers=self.headers,
-            json={"inputs": text, "options": {"wait_for_model": True}}
+            json={
+                "inputs": text,
+                "options": {"wait_for_model": True}
+            }
         )
         response.raise_for_status()
-        vector = response.json()
+        result = response.json()
+        
+        # Handle nested array response - average pool the token embeddings
+        if isinstance(result, list) and len(result) > 0:
+            if isinstance(result[0], list):
+                # It's a 2D array (tokens x embedding_dim), mean pool
+                import numpy as np
+                arr = np.array(result)
+                vector = arr.mean(axis=0).tolist()
+            else:
+                vector = result
+        else:
+            vector = result
+            
         return self._normalize(vector)
+
+    def embed_text(self, text: str) -> List[float]:
+        """Embed a single string."""
+        return self._get_embedding(text)
 
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of strings."""
-        response = requests.post(
-            API_URL,
-            headers=self.headers,
-            json={"inputs": texts, "options": {"wait_for_model": True}}
-        )
-        response.raise_for_status()
-        vectors = response.json()
-        return [self._normalize(v) for v in vectors]
+        # Process one at a time to handle the response format
+        return [self._get_embedding(text) for text in texts]
 
     # ── LangChain compatibility ─────────────────────────────────────────────────
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
