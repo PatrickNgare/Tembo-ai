@@ -1,39 +1,42 @@
 """
 embeddings.py
-Embeddings using Google Gemini API (FREE).
+Embeddings using Google Gemini API (FREE) via REST.
 
-Gemini provides free embedding API with generous limits.
+Uses direct REST API to avoid deprecated package issues.
 """
 
 import os
+import requests
 from typing import List
 from dotenv import load_dotenv
-import google.generativeai as genai
 
 load_dotenv()
 
-# Configure Gemini
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-if GOOGLE_API_KEY:
-    genai.configure(api_key=GOOGLE_API_KEY)
 
 
 class GeminiEmbeddings:
     def __init__(self):
         if not GOOGLE_API_KEY:
             raise ValueError("GOOGLE_API_KEY not set. Get free key at https://aistudio.google.com/apikey")
-        self.model = "models/embedding-001"
+        self.model = "text-embedding-004"
         self.dimension = 768
+        self.api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:embedContent"
         print(f"Using Gemini Embeddings: {self.model}")
 
     def embed_text(self, text: str) -> List[float]:
         """Embed a single string."""
-        result = genai.embed_content(
-            model=self.model,
-            content=text,
-            task_type="retrieval_query"
+        response = requests.post(
+            f"{self.api_url}?key={GOOGLE_API_KEY}",
+            json={
+                "model": f"models/{self.model}",
+                "content": {"parts": [{"text": text}]}
+            },
+            headers={"Content-Type": "application/json"},
+            timeout=30
         )
-        return result['embedding']
+        response.raise_for_status()
+        return response.json()["embedding"]["values"]
 
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of strings."""
