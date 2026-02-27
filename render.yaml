@@ -13,8 +13,6 @@ services:
         value: "3.11"
       - key: GROQ_API_KEY
         sync: false  # Set this in Render dashboard
-      - key: GOOGLE_API_KEY
-        sync: false  # Set this in Render dashboard (Gemini API key from https://aistudio.google.com/apikey)
       - key: DATABASE_URL
         sync: false  # Set this in Render dashboard (Supabase connection string)
     plan: free

@@ -73,7 +73,7 @@ def health():
         return {
             "status":             "ok",
             "documents_in_kb":    count,
-            "embedding_model":    "all-MiniLM-L6-v2 (HuggingFace API)",
+            "embedding_model":    "jina-embeddings-v2-base-en (Jina AI)",
             "llm":                "groq/llama-3.3-70b-versatile",
         }
     except Exception as e:

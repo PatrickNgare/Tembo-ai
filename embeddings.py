@@ -1,8 +1,8 @@
 """
 embeddings.py
-Embeddings using Google Gemini API (FREE) via REST.
+Embeddings using Jina AI (FREE - 1M tokens/month).
 
-Uses direct REST API to avoid deprecated package issues.
+Reliable free embedding API, no API key required for basic usage.
 """
 
 import os
@@ -12,35 +12,52 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+# Jina AI free embeddings - no API key needed!
+JINA_API_URL = "https://api.jina.ai/v1/embeddings"
 
 
-class GeminiEmbeddings:
+class JinaEmbeddings:
     def __init__(self):
-        if not GOOGLE_API_KEY:
-            raise ValueError("GOOGLE_API_KEY not set. Get free key at https://aistudio.google.com/apikey")
-        self.model = "embedding-001"
+        self.model = "jina-embeddings-v2-base-en"
         self.dimension = 768
-        self.api_url = "https://generativelanguage.googleapis.com/v1/models/embedding-001:embedContent"
-        print(f"Using Gemini Embeddings: {self.model}")
+        self.headers = {
+            "Content-Type": "application/json",
+        }
+        # Optional: Add API key for higher limits
+        jina_key = os.getenv("JINA_API_KEY")
+        if jina_key:
+            self.headers["Authorization"] = f"Bearer {jina_key}"
+        print(f"Using Jina Embeddings: {self.model}")
 
     def embed_text(self, text: str) -> List[float]:
         """Embed a single string."""
         response = requests.post(
-            f"{self.api_url}?key={GOOGLE_API_KEY}",
+            JINA_API_URL,
+            headers=self.headers,
             json={
-                "model": "models/embedding-001",
-                "content": {"parts": [{"text": text}]}
+                "model": self.model,
+                "input": [text]
             },
-            headers={"Content-Type": "application/json"},
             timeout=30
         )
         response.raise_for_status()
-        return response.json()["embedding"]["values"]
+        return response.json()["data"][0]["embedding"]
 
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of strings."""
-        return [self.embed_text(text) for text in texts]
+        # Batch for efficiency
+        response = requests.post(
+            JINA_API_URL,
+            headers=self.headers,
+            json={
+                "model": self.model,
+                "input": texts
+            },
+            timeout=60
+        )
+        response.raise_for_status()
+        data = response.json()["data"]
+        return [item["embedding"] for item in data]
 
     # ── LangChain compatibility ─────────────────────────────────────────────────
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
@@ -51,7 +68,7 @@ class GeminiEmbeddings:
 
 
 # Singleton — import this everywhere
-embedder = GeminiEmbeddings()
+embedder = JinaEmbeddings()
 
 
 # ── Quick test ──────────────────────────────────────────────────────────────────
