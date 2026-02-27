@@ -1,8 +1,8 @@
 """
 embeddings.py
-Embeddings using Jina AI (FREE - 1M tokens/month).
+Embeddings using Cohere API (FREE tier - 100 calls/min).
 
-Reliable free embedding API, no API key required for basic usage.
+Get free API key at: https://dashboard.cohere.com/api-keys
 """
 
 import os
@@ -12,52 +12,53 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Jina AI free embeddings - no API key needed!
-JINA_API_URL = "https://api.jina.ai/v1/embeddings"
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 
 
-class JinaEmbeddings:
+class CohereEmbeddings:
     def __init__(self):
-        self.model = "jina-embeddings-v2-base-en"
-        self.dimension = 768
+        if not COHERE_API_KEY:
+            raise ValueError("COHERE_API_KEY not set. Get free key at https://dashboard.cohere.com/api-keys")
+        self.model = "embed-english-light-v3.0"  # Free tier model
+        self.dimension = 384
+        self.api_url = "https://api.cohere.ai/v1/embed"
         self.headers = {
+            "Authorization": f"Bearer {COHERE_API_KEY}",
             "Content-Type": "application/json",
         }
-        # Optional: Add API key for higher limits
-        jina_key = os.getenv("JINA_API_KEY")
-        if jina_key:
-            self.headers["Authorization"] = f"Bearer {jina_key}"
-        print(f"Using Jina Embeddings: {self.model}")
+        print(f"Using Cohere Embeddings: {self.model}")
 
     def embed_text(self, text: str) -> List[float]:
         """Embed a single string."""
         response = requests.post(
-            JINA_API_URL,
+            self.api_url,
             headers=self.headers,
             json={
                 "model": self.model,
-                "input": [text]
+                "texts": [text],
+                "input_type": "search_query",
+                "truncate": "END"
             },
             timeout=30
         )
         response.raise_for_status()
-        return response.json()["data"][0]["embedding"]
+        return response.json()["embeddings"][0]
 
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of strings."""
-        # Batch for efficiency
         response = requests.post(
-            JINA_API_URL,
+            self.api_url,
             headers=self.headers,
             json={
                 "model": self.model,
-                "input": texts
+                "texts": texts,
+                "input_type": "search_document",
+                "truncate": "END"
             },
             timeout=60
         )
         response.raise_for_status()
-        data = response.json()["data"]
-        return [item["embedding"] for item in data]
+        return response.json()["embeddings"]
 
     # ── LangChain compatibility ─────────────────────────────────────────────────
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
@@ -68,7 +69,7 @@ class JinaEmbeddings:
 
 
 # Singleton — import this everywhere
-embedder = JinaEmbeddings()
+embedder = CohereEmbeddings()
 
 
 # ── Quick test ──────────────────────────────────────────────────────────────────

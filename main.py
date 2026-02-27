@@ -73,7 +73,7 @@ def health():
         return {
             "status":             "ok",
             "documents_in_kb":    count,
-            "embedding_model":    "jina-embeddings-v2-base-en (Jina AI)",
+            "embedding_model":    "embed-english-light-v3.0 (Cohere)",
             "llm":                "groq/llama-3.3-70b-versatile",
         }
     except Exception as e:
