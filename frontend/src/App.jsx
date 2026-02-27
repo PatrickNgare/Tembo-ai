@@ -125,7 +125,7 @@ function App() {
       </div>
 
       {/* Header */}
-      <header className="relative z-10 bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/50 px-3 sm:px-4 py-3 sm:py-4 shadow-xl">
+      <header className="relative z-10 bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/50 px-3 sm:px-4 py-3 sm:py-4 shadow-xl safe-area-top">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="relative">
@@ -203,13 +203,13 @@ function App() {
                   'Beaches near Mombasa',
                   'Amboseli elephants',
                   'Budget tips',
-                  'Migration dates',
-                  'Nairobi attractions'
+                  'Kenyan food',
+                  'Hidden gems'
                 ].map((suggestion, i) => (
                   <button
                     key={suggestion}
                     onClick={() => handleSuggestion(suggestion)}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-slate-800/50 hover:bg-emerald-600/20 border border-slate-700/50 hover:border-emerald-500/50 text-slate-300 hover:text-white rounded-full text-xs sm:text-sm transition-all hover:scale-105 active:scale-95"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-slate-800/50 hover:bg-emerald-600/20 border border-slate-700/50 hover:border-emerald-500/50 text-slate-300 hover:text-white rounded-full text-xs sm:text-sm transition-all chip-hover active:scale-95"
                     style={{ animationDelay: `${i * 50}ms` }}
                   >
                     {suggestion}
@@ -230,7 +230,7 @@ function App() {
       </main>
 
       {/* Input Form */}
-      <footer className="relative z-10 bg-slate-900/80 backdrop-blur-xl border-t border-slate-700/50 px-3 sm:px-4 py-3 sm:py-4">
+      <footer className="relative z-10 bg-slate-900/80 backdrop-blur-xl border-t border-slate-700/50 px-3 sm:px-4 py-3 sm:py-4 safe-area-bottom">
         <div className="max-w-4xl mx-auto">
           {/* Category Filter */}
           <div className="flex gap-1.5 sm:gap-2 mb-2 sm:mb-3 overflow-x-auto pb-2 scrollbar-hide -mx-1 px-1">
@@ -238,7 +238,7 @@ function App() {
               <button
                 key={cat.value}
                 onClick={() => setCategory(cat.value)}
-                className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm whitespace-nowrap transition-all chip-hover ${
                   category === cat.value
                     ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/25'
                     : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50 hover:text-white border border-slate-700/50'
@@ -279,7 +279,7 @@ function App() {
 
           {/* Footer Text */}
           <p className="text-center text-slate-600 text-[10px] sm:text-xs mt-2 sm:mt-3">
-            Powered by Groq AI • Cohere Embeddings • 188+ Kenya docs
+            Powered by Groq AI • Cohere Embeddings • 240+ Kenya docs
           </p>
         </div>
       </footer>
