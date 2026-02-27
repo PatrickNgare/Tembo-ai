@@ -1,6 +1,8 @@
 # 🐘 Tembo AI — Kenya Travel Assistant
 
-An AI-powered travel assistant for Kenya with a beautiful React frontend and a fully free tech stack (no API costs for embeddings!).
+An AI-powered travel assistant for Kenya with a beautiful React frontend and a fully free tech stack.
+
+**🚀 Live Demo:** [https://tembo-ai-frontend.onrender.com](https://tembo-ai-frontend.onrender.com)
 
 ![Tembo AI](https://img.shields.io/badge/Kenya-Travel%20Assistant-success?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5GNPC90ZXh0Pjwvc3ZnPg==)
 
@@ -14,7 +16,20 @@ An AI-powered travel assistant for Kenya with a beautiful React frontend and a f
 - ⚡ **Real-time Typing Effect** — Character-by-character response display
 - 🏷️ **Category Filters** — Filter by Safari, Beaches, Culture, Transport
 - 📊 **Source Attribution** — See which documents informed each answer
-- 🆓 **100% Free Stack** — Local embeddings + Groq free tier
+- 🆓 **100% Free Stack** — Cohere embeddings + Groq LLM + Supabase
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| **Frontend** | React + Tailwind CSS |
+| **Backend** | FastAPI (Python) |
+| **Embeddings** | Cohere `embed-english-light-v3.0` (free tier) |
+| **LLM** | Groq `llama-3.3-70b-versatile` (free tier) |
+| **Vector DB** | PostgreSQL + pgvector (Supabase) |
+| **Hosting** | Render (free tier) |
 
 ---
 
@@ -68,13 +83,14 @@ npm run dev
 tembo-ai/
 ├── main.py                 # FastAPI app entry point
 ├── rag.py                  # RAG pipeline (retrieval + generation)
-├── embeddings.py           # Local embeddings (sentence-transformers)
+├── embeddings.py           # Cohere embeddings API
 ├── vector_store.py         # PostgreSQL + pgvector vector store
 ├── setup_vector.py         # SQL schema for pgvector setup
 ├── scrape_kenya_data.py    # Web scraper for Kenya travel data
-├── massive_kenya_data.py   # Curated Kenya knowledge base (376+ docs)
+├── massive_kenya_data.py   # Curated Kenya knowledge base (188 docs)
 ├── sample_requests.json    # Example API requests
 ├── requirements.txt
+├── render.yaml             # Render deployment config
 ├── frontend/               # React + Tailwind CSS frontend
 │   ├── src/
 │   │   ├── App.jsx         # Main chat component
@@ -91,10 +107,16 @@ tembo-ai/
 Create a `.env` file in the root directory:
 
 ```env
-# Groq API (free tier available)
+# Groq API (free tier - https://console.groq.com)
 GROQ_API_KEY=gsk_your-groq-key-here
 
-# PostgreSQL Database
+# Cohere API (free tier - https://dashboard.cohere.com/api-keys)
+COHERE_API_KEY=your-cohere-key-here
+
+# PostgreSQL Database (Supabase)
+DATABASE_URL=postgresql://postgres.[project-ref]:[password]@aws-0-us-east-1.pooler.supabase.com:6543/postgres
+
+# Or for local development:
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=tembo_ai
