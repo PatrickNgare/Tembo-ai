@@ -1,8 +1,8 @@
 """
 embeddings.py
-Local embeddings using sentence-transformers.
+Local embeddings using FastEmbed (ONNX-based, no PyTorch needed).
 
-The all-MiniLM-L6-v2 model is only ~90MB and runs fine on Render free tier.
+Much lighter than sentence-transformers, works well on Render free tier.
 """
 
 import os
@@ -11,25 +11,25 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MODEL_NAME = "all-MiniLM-L6-v2"
+MODEL_NAME = "BAAI/bge-small-en-v1.5"  # Small, fast, good quality
 
 class LocalEmbeddings:
     def __init__(self):
-        from sentence_transformers import SentenceTransformer
+        from fastembed import TextEmbedding
         print(f"Loading embedding model: {MODEL_NAME}...")
-        self.model = SentenceTransformer(MODEL_NAME)
-        self.dimension = 384  # all-MiniLM-L6-v2 output dimension
+        self.model = TextEmbedding(model_name=MODEL_NAME)
+        self.dimension = 384  # bge-small-en output dimension
         print(f"Model loaded successfully!")
 
     def embed_text(self, text: str) -> List[float]:
         """Embed a single string."""
-        vector = self.model.encode(text, normalize_embeddings=True)
-        return vector.tolist()
+        vectors = list(self.model.embed([text]))
+        return vectors[0].tolist()
 
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of strings."""
-        vectors = self.model.encode(texts, normalize_embeddings=True)
-        return vectors.tolist()
+        vectors = list(self.model.embed(texts))
+        return [v.tolist() for v in vectors]
 
     # ── LangChain compatibility ─────────────────────────────────────────────────
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
