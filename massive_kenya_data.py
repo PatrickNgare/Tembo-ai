@@ -464,13 +464,13 @@ def populate_massive_database():
     current_count = get_document_count()
     print(f"\nCurrent documents in database: {current_count}")
     
+    # Skip if already populated (for server)
+    if current_count >= 200:
+        return {"status": "already_populated", "documents": current_count}
+    
     if current_count > 0:
-        response = input("\nDatabase has existing documents. Clear and repopulate? (y/n): ")
-        if response.lower() == 'y':
-            clear_knowledge_base()
-            print("Database cleared.")
-        else:
-            print("Adding to existing documents...")
+        clear_knowledge_base()
+        print("Database cleared.")
     
     print(f"\nPreparing to add {len(MASSIVE_KENYA_DATA)} documents...")
     print("This is a comprehensive knowledge base covering:")
@@ -507,9 +507,10 @@ def populate_massive_database():
         total_added += count
         print(f"  Batch {i//batch_size + 1}: Added {count} documents (Total: {total_added})")
     
+    final_count = get_document_count()
     print(f"\n{'='*70}")
     print(f"✅ Successfully added {total_added} documents!")
-    print(f"📚 Total documents in database: {get_document_count()}")
+    print(f"📚 Total documents in database: {final_count}")
     
     # Print summary by category
     print("\n📊 Documents by category:")
@@ -531,15 +532,9 @@ def populate_massive_database():
     
     print(f"\n{'='*70}")
     print("🎉 Comprehensive knowledge base ready!")
-    print("🐘 Tembo can now answer detailed questions about:")
-    print("   • Park entry fees and best times to visit")
-    print("   • Wildlife viewing tips and locations")
-    print("   • Beach destinations and activities")
-    print("   • Cultural experiences and cuisine")
-    print("   • Transport options and logistics")
-    print("   • Sample itineraries and costs")
-    print("   • Health, safety, and practical tips")
     print(f"{'='*70}")
+    
+    return {"status": "populated", "documents_added": total_added, "total_documents": final_count}
 
 
 if __name__ == "__main__":

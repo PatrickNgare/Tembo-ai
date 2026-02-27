@@ -67,8 +67,20 @@ def health():
         return {
             "status":             "ok",
             "documents_in_kb":    count,
-            "embedding_model":    "all-MiniLM-L6-v2 (local)",
+            "embedding_model":    "all-MiniLM-L6-v2 (HuggingFace API)",
             "llm":                "groq/llama-3.3-70b-versatile",
         }
     except Exception as e:
         raise HTTPException(status_code=503, detail=f"DB error: {str(e)}")
+
+
+# ── Setup endpoint (populate database) ────────────────────────────────────────────
+@app.post("/setup")
+def setup_database():
+    """One-time setup: populate the database with Kenya travel data."""
+    try:
+        from massive_kenya_data import populate_massive_database
+        result = populate_massive_database()
+        return {"status": "ok", "message": "Database populated", "details": result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Setup error: {str(e)}")
