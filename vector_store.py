@@ -9,19 +9,36 @@ import os
 import psycopg2
 import psycopg2.extras
 from typing import List, Optional, Tuple
+from urllib.parse import urlparse
 from dotenv import load_dotenv
 from embeddings import embedder
 
 load_dotenv()
 
 # ── Database connection ─────────────────────────────────────────────────────────
-DB_CONFIG = {
-    "host":     os.getenv("DB_HOST", "localhost"),
-    "port":     os.getenv("DB_PORT", "5432"),
-    "dbname":   os.getenv("DB_NAME", "tembo_ai"),
-    "user":     os.getenv("DB_USER", "postgres"),
-    "password": os.getenv("DB_PASSWORD", ""),
-}
+# Supports both DATABASE_URL (Supabase/Render) and individual vars (local dev)
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:
+    # Parse DATABASE_URL for Supabase/Render deployment
+    parsed = urlparse(DATABASE_URL)
+    DB_CONFIG = {
+        "host":     parsed.hostname,
+        "port":     parsed.port or 5432,
+        "dbname":   parsed.path.lstrip("/"),
+        "user":     parsed.username,
+        "password": parsed.password,
+        "sslmode":  "require",  # Required for Supabase
+    }
+else:
+    # Fallback to individual env vars for local development
+    DB_CONFIG = {
+        "host":     os.getenv("DB_HOST", "localhost"),
+        "port":     os.getenv("DB_PORT", "5432"),
+        "dbname":   os.getenv("DB_NAME", "tembo_ai"),
+        "user":     os.getenv("DB_USER", "postgres"),
+        "password": os.getenv("DB_PASSWORD", ""),
+    }
 
 
 def get_connection():
