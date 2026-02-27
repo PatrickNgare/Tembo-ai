@@ -90,3 +90,48 @@ def setup_database():
         return {"status": "ok", "message": "Database populated", "details": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Setup error: {str(e)}")
+
+
+# ── Reset endpoint (clear and repopulate database) ────────────────────────────────
+@app.post("/reset")
+def reset_database():
+    """Force clear and repopulate the database with latest Kenya travel data."""
+    try:
+        from vector_store import clear_knowledge_base
+        from massive_kenya_data import populate_massive_database, MASSIVE_KENYA_DATA
+        
+        # Clear existing data
+        clear_knowledge_base()
+        logger.info("Database cleared, repopulating...")
+        
+        # Force repopulate (modify temp to bypass check)
+        from vector_store import add_documents_simple
+        
+        texts = [doc["content"] for doc in MASSIVE_KENYA_DATA]
+        metadatas = [
+            {
+                "source": doc["source"],
+                "category": doc["category"],
+                "region": doc["region"],
+                "destination": doc["destination"],
+            }
+            for doc in MASSIVE_KENYA_DATA
+        ]
+        
+        # Add in batches
+        batch_size = 50
+        total_added = 0
+        for i in range(0, len(texts), batch_size):
+            batch_texts = texts[i:i+batch_size]
+            batch_meta = metadatas[i:i+batch_size]
+            count = add_documents_simple(batch_texts, batch_meta)
+            total_added += count
+        
+        return {
+            "status": "ok", 
+            "message": "Database reset complete",
+            "documents_added": total_added
+        }
+    except Exception as e:
+        logger.error(f"Reset error: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Reset error: {str(e)}")
