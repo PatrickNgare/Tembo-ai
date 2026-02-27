@@ -452,6 +452,92 @@ MASSIVE_KENYA_DATA = [
     {"content": "Photography safaris: Specialized trips with photography guides, extended hours, and custom vehicles with camera mounts. Best months: February (great light, calving), August-September (migration), November (dramatic skies). Budget 3-4 days minimum in each location.", "source": "magicalkenya.com", "category": "safari", "region": "General", "destination": "Kenya"},
     
     {"content": "Walking and horseback safaris: Available in conservancies and some parks (not Masai Mara main reserve). Walking safaris with armed rangers offer intimate wildlife experience. Horseback safaris in Laikipia and Chyulu Hills. Hot air balloons in Masai Mara ($450-550). Night drives in conservancies.", "source": "magicalkenya.com", "category": "safari", "region": "General", "destination": "Kenya"},
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # KENYAN FOOD & CUISINE (15 documents)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    {"content": "Nyama Choma is Kenya's national dish - grilled meat, typically goat or beef, slow-roasted over hot coals. Best enjoyed with ugali (cornmeal porridge) and kachumbari (fresh tomato-onion salad). Popular spots in Nairobi: Carnivore Restaurant, Ranalo Foods, and roadside joints in Kikuyu. Cost: 500-1,500 KES per person.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Ugali is Kenya's staple food - a thick cornmeal porridge formed into a dense, dough-like ball. Eaten with hands by pinching off a piece, forming an indent, and scooping stew. Served with sukuma wiki (collard greens), beef stew, or fish. Found everywhere from street vendors to high-end restaurants. 50-200 KES.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Sukuma Wiki means 'stretch the week' in Swahili - affordable collard greens sautéed with onions and tomatoes. The most common vegetable in Kenya, served alongside ugali and meat. Rich in vitamins, cheap (20-50 KES/bunch), and found in every Kenyan home and restaurant.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Kenyan Pilau is aromatic spiced rice cooked with meat (usually beef or chicken), cumin, cardamom, cinnamon, and cloves. Coastal pilau has coconut milk. Best in Mombasa's Old Town, Swahili restaurants. Often served at celebrations. Street food version: 150-300 KES, restaurant: 500-1,000 KES.", "source": "magicalkenya.com", "category": "food", "region": "Coast", "destination": "Mombasa"},
+    
+    {"content": "Swahili cuisine in coastal Kenya blends African, Arab, Indian, and Portuguese influences. Signature dishes: biryani, samosas, bhajia (spiced potato fritters), mahamri (coconut donuts), mshikaki (meat skewers), and fish in coconut curry. Best experienced in Mombasa Old Town and Lamu.", "source": "magicalkenya.com", "category": "food", "region": "Coast", "destination": "Mombasa"},
+    
+    {"content": "Kenyan breakfast favorites: Mandazi (sweet fried dough), chai (spiced tea with milk), eggs and toast, or chapati (flatbread). Hotels serve continental and English breakfast. Street breakfast: 50-150 KES. Java House (chain): 400-800 KES. Most Kenyans drink sweet milky tea.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Kenyan street food: Mutura (African sausage), roasted maize, chips mayai (omelette with fries), samosas, smokies (hot dogs), mandazi, kashata (coconut candy). Safe to eat from busy stalls with high turnover. Cost: 20-200 KES per item. Best areas: downtown Nairobi, markets.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Nairobi"},
+    
+    {"content": "Carnivore Restaurant in Nairobi is world-famous for its all-you-can-eat grilled meat experience. Waiters bring endless skewers of beef, lamb, pork, chicken, and exotic meats (ostrich, crocodile). Price: 4,500 KES ($35) adults. Located in Langata. Book ahead on weekends.", "source": "magicalkenya.com", "category": "food", "region": "Nairobi", "destination": "Nairobi"},
+    
+    {"content": "Tusker is Kenya's most popular beer, brewed since 1922. Named after an elephant that killed the founder's partner. Other local beers: White Cap, Pilsner. Local spirits: Kenya Cane (rum), KWAL vodka. Sundowner drinks at safari lodges are a tradition. Supermarket beer: 200 KES, bar: 300-500 KES.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Kenyan coffee is world-renowned, grown on the slopes of Mount Kenya and in the highlands. Look for AA grade beans. Best coffee shops in Nairobi: Artcaffe, Java House, Nairobi Street Kitchen, Sierra Brasserie. Coffee farms offer tours around Thika and Ruiru. Factory direct: 500-1,000 KES per 250g.", "source": "magicalkenya.com", "category": "food", "region": "Central", "destination": "Kenya"},
+    
+    {"content": "Fresh tropical fruits in Kenya: mangoes (December-March), pineapples, passion fruit, tree tomatoes, custard apples, jackfruit, coconuts. Best at local markets - much cheaper than supermarkets. Gikomba Market and City Market in Nairobi. Beach vendors sell fresh coconuts (50-100 KES).", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Nairobi restaurant scene: Upscale options include Talisman (fusion), Tamarind (seafood), Habesha (Ethiopian), and Mediterraneo. Mid-range: About Thyme, Artcaffe, Brew Bistro. Budget: Java House, local hotels serving Kenyan food. Food delivery apps: Glovo, Uber Eats, Jumia Food.", "source": "magicalkenya.com", "category": "food", "region": "Nairobi", "destination": "Nairobi"},
+    
+    {"content": "Fish in Kenya: Tilapia from Lake Victoria is the most popular - fried whole and served with ugali. Lake Turkana has excellent Nile perch. Coastal Kenya offers fresh seafood: prawns, lobster, crab, and various fish. Swahili fish curry with coconut is a coastal specialty.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Vegetarian food in Kenya: Indian restaurants offer extensive vegetarian options. Kenyan traditional vegetables: sukuma wiki, managu (African nightshade), terere, and kunde (cowpeas). Ethiopian restaurants serve vegetarian platters. Hindu temple langars provide free vegetarian meals. Most lodges accommodate dietary needs.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Kenyan chai is spiced black tea boiled with milk, sugar, ginger, and cardamom. Served everywhere from street vendors (10-30 KES) to lodges. Dawa (Swahili for 'medicine') is a honey-ginger-lime drink, sometimes with vodka. Fresh fruit juices are excellent - try passion fruit or tree tomato.", "source": "magicalkenya.com", "category": "food", "region": "General", "destination": "Kenya"},
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # BUDGET TRAVEL TIPS (12 documents)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    {"content": "Budget safari options: Join group tours to share costs. Stay in budget camps or bandas ($50-100/night). Self-drive in your own or rented vehicle. Visit less touristy parks (Tsavo, Samburu vs Masai Mara). Travel in low season (April-May, November). Budget: $150-250/day all-inclusive.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Cheap transport in Kenya: Matatus (shared minibuses) cost 50-500 KES for most routes. Boda-bodas (motorcycle taxis) for short distances (50-200 KES). SGR train Nairobi-Mombasa economy class: 1,000 KES. Inter-city buses: 1,500-2,500 KES. Only use marked taxis or Uber/Bolt.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Budget accommodation in Nairobi: Hostels (Wildebeest Camp, Jungle Junction) $15-25/night. Budget hotels (Silver Springs, Nairobi Transit) $30-50/night. Airbnb apartments $25-60/night. Backpacker areas: Westlands, South B/C. Avoid very cheap central hotels - safety issues.", "source": "magicalkenya.com", "category": "budget", "region": "Nairobi", "destination": "Nairobi"},
+    
+    {"content": "Free and cheap activities in Nairobi: Karura Forest (600 KES entry), Arboretum (100 KES), Uhuru Gardens (Free), city walking tours, window shopping at Village Market, Maasai Market (varies by day), National Archives (free). Most museums under 500 KES for residents.", "source": "magicalkenya.com", "category": "budget", "region": "Nairobi", "destination": "Nairobi"},
+    
+    {"content": "Budget beach holidays: Diani has guesthouses from $30/night. Watamu backpacker hostels from $15/night. Eat at local restaurants (200-500 KES meals) instead of hotel restaurants. Public beaches are free. Shared snorkeling trips cost half of private ones. Travel via bus instead of flying.", "source": "magicalkenya.com", "category": "budget", "region": "Coast", "destination": "Diani Beach"},
+    
+    {"content": "Eating cheap in Kenya: Local hotels (restaurants) serve ugali, stew, vegetables for 150-300 KES. Street food even cheaper (50-150 KES). Supermarkets for snacks and water. Avoid tourist restaurants in safari lodges. Naivas and Quickmart supermarkets have best prices.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Money-saving tips: Get local SIM card (Safaricom M-Pesa for mobile money). Withdraw cash at ATMs (lower fees than exchange bureaus). Bargain at markets (start at 50% of asking price). Book directly with local operators. Travel with a group to share costs.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Kenya budget itinerary (7 days, under $500): Day 1-2: Nairobi (budget hotel $30/night, Giraffe Centre $15, Sheldrick Trust free). Days 3-4: Naivasha/Hell's Gate ($50/day camping, cycling). Days 5-6: Budget Masai Mara camping safari ($150/day). Day 7: Return Nairobi.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Self-drive safaris can save money: Rent a 4x4 ($80-150/day) and drive yourself. Many parks allow self-drive. Fuel costs ~150 KES/liter. Book KWS bandas ($30-75/night) instead of lodges. Bring your own food and cook at campsites. Total savings: 40-60% vs organized tours.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Low season travel: April-May and November have 30-50% lower prices. Fewer tourists, more availability. Downsides: some rain, some roads impassable, migration not in Mara. Upside: green landscapes, bird watching, dramatic skies for photography, baby animals.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Kenyan resident rates: If you have a work permit or resident visa, you qualify for citizen rates at national parks (80% cheaper than tourist rates). Some lodges offer resident rates too. Bring your residence permit or Kenyan ID to gate.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+    
+    {"content": "Budget vs mid-range vs luxury safari comparison: Budget (camping, group tours): $150-250/day. Mid-range (comfortable lodges, private vehicle): $350-550/day. Luxury (exclusive camps, flying): $700-1,500/day. Budget safaris see the same wildlife - it's the accommodation and service that differ.", "source": "magicalkenya.com", "category": "budget", "region": "General", "destination": "Kenya"},
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # HIDDEN GEMS & OFF-BEATEN PATH (10 documents)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    {"content": "Chyulu Hills National Park is an underrated gem - volcanic hills with lush green landscapes, views of Kilimanjaro, underground lava tube caves. Few visitors. Activities: walking safaris, horseback riding, cave exploration. Accommodation: Campi ya Kanzi, Ol Donyo Lodge. 150 km from Nairobi.", "source": "kws.go.ke", "category": "safari", "region": "Rift Valley", "destination": "Chyulu Hills"},
+    
+    {"content": "Marsabit National Park in northern Kenya offers stark desert beauty, crater lakes, and unique forest in the desert. Home to some of the largest elephants in Africa. Few tourists, authentic wilderness. Best combined with Lake Turkana. 4WD essential. June-October best.", "source": "kws.go.ke", "category": "safari", "region": "Northern", "destination": "Marsabit"},
+    
+    {"content": "Kakamega Forest is Kenya's only tropical rainforest, a remnant of the great Congo forest. 380+ bird species, primates (colobus monkeys, blue monkeys), butterflies, rare plants. Budget: guesthouses from $20/night. Guided walks available. Best for bird watchers and nature lovers.", "source": "kws.go.ke", "category": "adventure", "region": "Western", "destination": "Kakamega"},
+    
+    {"content": "Meru National Park, where Joy and George Adamson released Elsa the lioness (Born Free). Less crowded than Masai Mara but equally beautiful with similar wildlife. Unique animals: reticulated giraffe, Grevy's zebra, Somali ostrich. Excellent rhino sanctuary.", "source": "kws.go.ke", "category": "safari", "region": "Central", "destination": "Meru"},
+    
+    {"content": "Rusinga Island in Lake Victoria is a hidden gem - prehistoric fossils, birdwatching, fishing, and peaceful atmosphere. Rusinga Island Lodge offers exclusive experience. Accessible by road or boat. Famous for Homo erectus fossil discovery. Traditional Luo culture.", "source": "magicalkenya.com", "category": "adventure", "region": "Western", "destination": "Lake Victoria"},
+    
+    {"content": "Matthews Range in northern Kenya is known as 'Kenya's last wilderness'. Walking safaris with Samburu guides, forest elephants, wild dogs. Very few tourists. Community conservancies like Namunyak offer authentic cultural immersion. Remote but rewarding.", "source": "magicalkenya.com", "category": "adventure", "region": "Northern", "destination": "Matthews Range"},
+    
+    {"content": "Ol Pejeta Conservancy near Nanyuki is perfect for rhino lovers. Home to the last two northern white rhinos and largest black rhino sanctuary in East Africa. Chimpanzee sanctuary (only chimps in Kenya). Night drives, walking safaris available. 200 km north of Nairobi.", "source": "kws.go.ke", "category": "safari", "region": "Central", "destination": "Ol Pejeta"},
+    
+    {"content": "Aberdare National Park offers unique mountain ecosystems, waterfalls, and rare animals like bongo antelope. The Ark and Treetops lodges offer animal viewing from elevated hideouts at waterholes. Cool climate, forest drives, fishing. Good for combining with Mount Kenya area.", "source": "kws.go.ke", "category": "safari", "region": "Central", "destination": "Aberdares"},
+    
+    {"content": "Watamu Marine National Park north of Mombasa has some of the best snorkeling and diving on the East African coast. Whale sharks (October-March), manta rays, sea turtles. Less developed than Diani. Gede Ruins nearby for history. Good budget beach option.", "source": "kws.go.ke", "category": "beach", "region": "Coast", "destination": "Watamu"},
+    
+    {"content": "Saiwa Swamp National Park is Kenya's smallest park (3 sq km) and the only place to see sitatunga, a rare semi-aquatic antelope. Walking safaris only, no vehicles. Boardwalks over swamp. De Brazza's monkey, giant forest squirrel. Budget-friendly, near Kitale in western Kenya.", "source": "kws.go.ke", "category": "adventure", "region": "Western", "destination": "Saiwa Swamp"},
 ]
 
 
