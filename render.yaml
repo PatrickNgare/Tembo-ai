@@ -1,0 +1,17 @@
+# Render Blueprint for Tembo AI Backend
+# Deploy: Connect your GitHub repo to Render and it will auto-detect this file
+
+services:
+  - type: web
+    name: tembo-ai-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: GROQ_API_KEY
+        sync: false  # Set this in Render dashboard
+      - key: DATABASE_URL
+        sync: false  # Set this in Render dashboard (use Supabase/Neon)
+    plan: free
