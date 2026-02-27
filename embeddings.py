@@ -22,7 +22,7 @@ class GeminiEmbeddings:
     def __init__(self):
         if not GOOGLE_API_KEY:
             raise ValueError("GOOGLE_API_KEY not set. Get free key at https://aistudio.google.com/apikey")
-        self.model = "models/text-embedding-004"
+        self.model = "models/embedding-001"
         self.dimension = 768
         print(f"Using Gemini Embeddings: {self.model}")
 
