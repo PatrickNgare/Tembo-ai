@@ -1,35 +1,43 @@
 """
 embeddings.py
-Local embeddings using FastEmbed (ONNX-based, no PyTorch needed).
+Embeddings using Google Gemini API (FREE).
 
-Much lighter than sentence-transformers, works well on Render free tier.
+Gemini provides free embedding API with generous limits.
 """
 
 import os
 from typing import List
 from dotenv import load_dotenv
+import google.generativeai as genai
 
 load_dotenv()
 
-MODEL_NAME = "BAAI/bge-small-en-v1.5"  # Small, fast, good quality
+# Configure Gemini
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+if GOOGLE_API_KEY:
+    genai.configure(api_key=GOOGLE_API_KEY)
 
-class LocalEmbeddings:
+
+class GeminiEmbeddings:
     def __init__(self):
-        from fastembed import TextEmbedding
-        print(f"Loading embedding model: {MODEL_NAME}...")
-        self.model = TextEmbedding(model_name=MODEL_NAME)
-        self.dimension = 384  # bge-small-en output dimension
-        print(f"Model loaded successfully!")
+        if not GOOGLE_API_KEY:
+            raise ValueError("GOOGLE_API_KEY not set. Get free key at https://aistudio.google.com/apikey")
+        self.model = "models/text-embedding-004"
+        self.dimension = 768
+        print(f"Using Gemini Embeddings: {self.model}")
 
     def embed_text(self, text: str) -> List[float]:
         """Embed a single string."""
-        vectors = list(self.model.embed([text]))
-        return vectors[0].tolist()
+        result = genai.embed_content(
+            model=self.model,
+            content=text,
+            task_type="retrieval_query"
+        )
+        return result['embedding']
 
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of strings."""
-        vectors = list(self.model.embed(texts))
-        return [v.tolist() for v in vectors]
+        return [self.embed_text(text) for text in texts]
 
     # ── LangChain compatibility ─────────────────────────────────────────────────
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
@@ -40,7 +48,7 @@ class LocalEmbeddings:
 
 
 # Singleton — import this everywhere
-embedder = LocalEmbeddings()
+embedder = GeminiEmbeddings()
 
 
 # ── Quick test ──────────────────────────────────────────────────────────────────

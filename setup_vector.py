@@ -7,11 +7,11 @@
 CREATE EXTENSION IF NOT EXISTS vector;
 
 -- 2. Create the documents table
---    dim = 384 to match all-MiniLM-L6-v2 embeddings
+--    dim = 768 to match Gemini text-embedding-004
 CREATE TABLE IF NOT EXISTS documents (
     id          SERIAL PRIMARY KEY,
     content     TEXT        NOT NULL,           -- the raw text chunk
-    embedding   VECTOR(384) NOT NULL,           -- local model produces 384-dim vectors
+    embedding   VECTOR(768) NOT NULL,           -- Gemini produces 768-dim vectors
     source      TEXT,                           -- e.g. 'kws.go.ke', 'manual'
     category    TEXT,                           -- 'safari', 'beach', 'transport', etc.
     region      TEXT,                           -- 'Coast', 'Rift Valley', 'Nairobi', etc.
