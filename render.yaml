@@ -1,7 +1,8 @@
-# Render Blueprint for Tembo AI Backend
+# Render Blueprint for Tembo AI
 # Deploy: Connect your GitHub repo to Render and it will auto-detect this file
 
 services:
+  # Backend API
   - type: web
     name: tembo-ai-backend
     runtime: python
@@ -13,5 +14,20 @@ services:
       - key: GROQ_API_KEY
         sync: false  # Set this in Render dashboard
       - key: DATABASE_URL
-        sync: false  # Set this in Render dashboard (use Supabase/Neon)
+        sync: false  # Set this in Render dashboard (Supabase connection string)
+    plan: free
+
+  # Frontend (Static Site)
+  - type: web
+    name: tembo-ai-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false  # Set to your backend URL: https://tembo-ai-backend.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     plan: free
