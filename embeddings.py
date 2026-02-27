@@ -19,9 +19,9 @@ class GeminiEmbeddings:
     def __init__(self):
         if not GOOGLE_API_KEY:
             raise ValueError("GOOGLE_API_KEY not set. Get free key at https://aistudio.google.com/apikey")
-        self.model = "text-embedding-004"
+        self.model = "embedding-001"
         self.dimension = 768
-        self.api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:embedContent"
+        self.api_url = "https://generativelanguage.googleapis.com/v1/models/embedding-001:embedContent"
         print(f"Using Gemini Embeddings: {self.model}")
 
     def embed_text(self, text: str) -> List[float]:
@@ -29,7 +29,7 @@ class GeminiEmbeddings:
         response = requests.post(
             f"{self.api_url}?key={GOOGLE_API_KEY}",
             json={
-                "model": f"models/{self.model}",
+                "model": "models/embedding-001",
                 "content": {"parts": [{"text": text}]}
             },
             headers={"Content-Type": "application/json"},
