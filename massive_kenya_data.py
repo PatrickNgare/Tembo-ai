@@ -223,6 +223,22 @@ MASSIVE_KENYA_DATA = [
     
     {"content": "Tiwi Beach is a quieter alternative to Diani, located between Diani and Likoni Ferry. The beach is more secluded with fewer vendors. Good for budget travelers and those seeking tranquility. Accommodation is more limited. Access to Diani beach facilities requires transport.", "source": "magicalkenya.com", "category": "beach", "region": "Coast", "destination": "Tiwi Beach"},
     
+    {"content": "Tiwi Beach is located 17 km south of Mombasa on Kenya's south coast, just before Diani Beach. The beach stretches about 4 km with white sand, coral cliffs, and natural rock pools perfect for swimming at low tide. Water temperature is 25-29°C year-round, similar to Diani but with far fewer tourists.", "source": "magicalkenya.com", "category": "beach", "region": "Coast", "destination": "Tiwi Beach"},
+    
+    {"content": "Getting to Tiwi Beach: Cross the Likoni Ferry from Mombasa (free, 20 minutes), then 20-minute drive south on the main Diani road. Turn off at Tiwi junction. Matatus from Likoni to Tiwi cost 50-100 KES. Taxis from Mombasa: 2,000-2,500 KES. The beach is about 25 km from Moi International Airport.", "source": "magicalkenya.com", "category": "transport", "region": "Coast", "destination": "Tiwi Beach"},
+    
+    {"content": "Tiwi Beach accommodation: Sand Island Beach Cottages (self-catering, $40-80/night), Tiwi Sea Castles ($50-100/night), Coral Cove Cottages ($60-120/night), Twiga Lodge (budget, $30-50/night), Capricho Beach Cottages. Most are self-catering cottages perfect for families and groups. No large resorts.", "source": "magicalkenya.com", "category": "beach", "region": "Coast", "destination": "Tiwi Beach"},
+    
+    {"content": "Tiwi Beach activities: Snorkeling and diving in the coral reef ($30-60), swimming in natural tidal pools, beach walks, kite surfing (wind conditions similar to Diani), fishing with local fishermen, and visiting nearby Kongo Mosque ruins. Day trips to Diani (10 minutes) for water sports and restaurants.", "source": "magicalkenya.com", "category": "beach", "region": "Coast", "destination": "Tiwi Beach"},
+    
+    {"content": "Kongo Mosque ruins near Tiwi Beach are the remains of a 16th-century Swahili settlement. The mosque and surrounding ruins show coral stone architecture typical of coastal trading towns. Free to visit, though a small tip to local guides is appreciated. Located within walking distance of Tiwi Beach cottages.", "source": "museums.or.ke", "category": "culture", "region": "Coast", "destination": "Tiwi Beach"},
+    
+    {"content": "Best time to visit Tiwi Beach: December-March (hot, dry, ideal beach weather), June-October (dry, cooler, great for activities). April-May has long rains. The beach is less affected by seaweed than some Diani sections. Low tide reveals rock pools with marine life - perfect for families with children.", "source": "magicalkenya.com", "category": "beach", "region": "Coast", "destination": "Tiwi Beach"},
+    
+    {"content": "Tiwi Beach vs Diani Beach: Tiwi is quieter, cheaper, and more secluded - ideal for budget travelers and those seeking peace. Diani has more resorts, restaurants, nightlife, and water sports operators. Tiwi's self-catering cottages suit families and long-stay visitors. Diani is just 10 minutes south if you want more action.", "source": "magicalkenya.com", "category": "beach", "region": "Coast", "destination": "Tiwi Beach"},
+    
+    {"content": "Tiwi Beach dining: Most visitors self-cater at their cottages. Small local restaurants serve fresh fish, pilau, and Swahili dishes for 200-500 KES. Groceries available at small shops in Tiwi village. For restaurants and bars, head to nearby Diani Beach (10 minutes) or Ukunda town.", "source": "magicalkenya.com", "category": "beach", "region": "Coast", "destination": "Tiwi Beach"},
+    
     {"content": "Funzi Island is an undeveloped island south of Diani, accessible only by boat. Day trips ($100-150) include mangrove cruises, village visits, seafood lunch, and sandbank swimming. The island has Swahili fishing communities unchanged for centuries. Overnight camping possible. Very few tourists.", "source": "magicalkenya.com", "category": "beach", "region": "Coast", "destination": "Funzi Island"},
 
     # ═══════════════════════════════════════════════════════════════════════════
